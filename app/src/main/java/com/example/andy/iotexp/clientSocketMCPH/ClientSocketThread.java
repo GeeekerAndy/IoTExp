@@ -9,7 +9,7 @@ import java.net.Socket;
 
 public class ClientSocketThread extends Thread {
 	private Socket socket = null;
-	private final String TAG = "ClientSocketThread";
+	private final String TAG = "MCPH";
 	private static ClientSocketThread clientSocket = null;
 	private MessageListener listener;
 	private final int buffer_size = 256;

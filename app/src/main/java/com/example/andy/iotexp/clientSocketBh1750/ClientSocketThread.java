@@ -10,7 +10,7 @@ import java.net.Socket;
 
 public class ClientSocketThread extends Thread {
 	private Socket socket = null;
-	private final String TAG = "ClientSocketThread";
+	private final String TAG = "Bh1750";
 	private static ClientSocketThread clientSocket = null;
 	private MessageListener listener;
 	private final int buffer_size = 256;
@@ -125,7 +125,7 @@ public class ClientSocketThread extends Thread {
 	}
 
 	/**
-	 * get inputstream from the ClientSocketThread
+	 * get inputstream from the ClientSocketThreadLEDBuzzer
 	 * 
 	 * @return InputStream
 	 */
@@ -140,7 +140,7 @@ public class ClientSocketThread extends Thread {
 	}
 
 	/**
-	 * get outputstream from ClientSocketThread
+	 * get outputstream from ClientSocketThreadLEDBuzzer
 	 * 
 	 * @return OutputStream
 	 * @throws IOException
