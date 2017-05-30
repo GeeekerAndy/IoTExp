@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         new FamilySafe();
-        new FamilyLight();
-        new FamilyWeather();
-        new FamilyTemperature();
-        new FamilyNanny();
+//        new FamilyLight();
+//        new FamilyWeather();
+//        new FamilyTemperature();
+//        new FamilyNanny();
     }
 }

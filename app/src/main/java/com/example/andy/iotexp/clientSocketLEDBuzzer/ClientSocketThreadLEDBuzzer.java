@@ -46,7 +46,7 @@ public class ClientSocketThreadLEDBuzzer extends Thread {
 				isNewStatus = false;
 			}
 			try {
-				sleep(10);
+				sleep(1);
 			} catch (InterruptedException e) {
 				Log.e(TAG, e.getMessage());
 				e.printStackTrace();
