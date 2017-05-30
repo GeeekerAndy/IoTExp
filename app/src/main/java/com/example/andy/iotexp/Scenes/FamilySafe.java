@@ -7,6 +7,7 @@ package com.example.andy.iotexp.Scenes;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.andy.iotexp.MainActivity;
@@ -22,6 +23,7 @@ public class FamilySafe {
     private ClientSocketThreadIrst clientSocketThreadIrstIrst;
     private ClientSocketThreadLEDBuzzer clientSocketThreadLEDBuzzer;
     private byte[] data = new byte[4];
+    private TextView tv_infrared_stat;
     private Handler handlerIrst = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -39,10 +41,12 @@ public class FamilySafe {
                     //此处添加触发警报和LED逻辑
                     clientSocketThreadLEDBuzzer.wBuffer[7] = 0x01;
                     clientSocketThreadLEDBuzzer.wBuffer[6] = 0x01;
+                    tv_infrared_stat.setText("红外状况：安全");
                     Log.e("FamilySafe", "infrared stopped");
                 } else {
                     clientSocketThreadLEDBuzzer.wBuffer[7] = 0x00;
                     clientSocketThreadLEDBuzzer.wBuffer[6] = 0x00;
+                    tv_infrared_stat.setText("红外状况：入侵");
                     Log.e("FamilySafe", "infrared beginning");
                 }
                 clientSocketThreadLEDBuzzer.isNewStatus = true;
@@ -51,7 +55,8 @@ public class FamilySafe {
     };
 
     //construction method
-    public FamilySafe() {
+    public FamilySafe(TextView tv_infrared_stat) {
+        this.tv_infrared_stat = tv_infrared_stat;
         Thread threadLEDBuzzer = new Thread(new Runnable() {
             public void run() {
                 try {
