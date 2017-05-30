@@ -10,7 +10,23 @@
         android:layout_width="0dp"
         android:layout_weight="4"
         android:layout_height="match_parent"
-        android:background="@drawable/interior_design">
+        android:background="@drawable/interior_design"
+        android:weightSum="1">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:id="@+id/sun_rain"
+            android:src="@drawable/sun"
+            android:paddingLeft="350dp"
+            android:layout_marginTop="5dp"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:id="@+id/lighton_off"
+            android:src="@drawable/lightbulb"
+            android:paddingLeft="350dp"
+            android:layout_marginTop="265dp"/>
 
     </LinearLayout>
 
