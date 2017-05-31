@@ -19,7 +19,6 @@
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:src="@drawable/sun"
             android:layout_marginTop="5dp"
             android:layout_marginRight="50dp"/>
 
@@ -29,7 +28,6 @@
             android:layout_height="55dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:src="@drawable/lightbulb"
             android:layout_marginBottom="5dp"
             android:layout_marginRight="50dp"/>
 
@@ -41,36 +39,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_margin="5dp">
-        <Button
-            android:id="@+id/bt_LED_on"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="LED开"/>
-        <Button
-            android:id="@+id/bt_LED_off"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="LED开"/>
-        <Button
-            android:id="@+id/bt_buzzer_on"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="蜂鸣器开"/>
-        <Button
-            android:id="@+id/bt_buzzer_off"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="蜂鸣器关"/>
+
         <TextView
             android:id="@+id/tv_infrared_stat"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="红外检测：安全"/>
+            android:text="红外检测：安全/入侵"/>
         <TextView
             android:id="@+id/tv_temperature"
             android:layout_width="match_parent"
@@ -100,13 +75,13 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="有无声音：有/无"/>
+            android:text="Is crying?"/>
         <TextView
             android:id="@+id/tv_light_stat"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="有无光照：有/无"/>
+            android:text="Is bright?"/>
 
 
     </LinearLayout>

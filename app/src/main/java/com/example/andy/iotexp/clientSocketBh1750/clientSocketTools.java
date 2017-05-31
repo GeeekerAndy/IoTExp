@@ -29,7 +29,7 @@ public class clientSocketTools {
 				}
 			}
 		} catch (SocketException ex) {
-			Log.e("WifiPreference IpAddress", ex.toString());
+			Log.e("WifiPreferenceIpAddress", ex.toString());
 		}
 		return null;
 	}

@@ -7,21 +7,27 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Process;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+//import com.example.andy.iotexp.MainActivity;
 import com.example.andy.iotexp.R;
 import com.example.andy.iotexp.clientSocketMCPH.*;
 
+import static java.lang.Thread.sleep;
+
+//import static java.lang.Thread.sleep;
+
 /**
- * using EXP_MFS sensor
+ * Bluetooth: using EXP_MCPH sensor
  */
 
 public class FamilyNanny {
     private ClientSocketThread clientSocketThread;
     private byte[] data = new byte[5];
-    private final String TAG = "McphActivity";
+    private final String TAG = "FamilyNanny";
     private Context context;
     private ImageView iv_light_on_off;
     private TextView tv_light_stat;
@@ -35,22 +41,22 @@ public class FamilyNanny {
             byte[] data = (byte[]) (msg.obj);
             if (data[0] == 0) {
                 if(data[1] == 0x01) {
-                    //dark ????
-                    iv_light_on_off.setBackgroundResource(R.drawable.lightbulb);
-                    tv_light_stat.setText("??????");
-                } else {
-                    //light ???
-                    iv_light_on_off.setBackgroundResource(R.drawable.darkbulb);
-                    tv_light_stat.setText("??????");
-                }
-                if(data[2] == 0x01) {
                     //Big noise. ????
-                    tv_sound_stat.setText("??????");
+                    tv_sound_stat.setText("Does cry? Yes");
                     r.play();
                 } else {
                     //Quiet. ????
-                    tv_sound_stat.setText("??????");
+                    tv_sound_stat.setText("Does cry? No");
                     r.stop();
+                }
+                if(data[2] == 0x01) {
+                    //dark ????
+                    iv_light_on_off.setBackgroundResource(R.drawable.lightbulb);
+                    tv_light_stat.setText("Is bright? No");
+                } else {
+                    //light ???
+                    iv_light_on_off.setBackgroundResource(R.drawable.darkbulb);
+                    tv_light_stat.setText("Is bright: Yes");
                 }
             }
         }
@@ -65,16 +71,33 @@ public class FamilyNanny {
 
         Thread t = new Thread(new Runnable() {
             public void run() {
+                Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
                 clientSocketThread = ClientSocketThread.getClientSocket(
                         clientSocketTools.getLocalIpAddress(), 6008);
                 clientSocketThread.setListener(new MessageListener() {
                     public void Message(byte[] message, int message_len) {
                         Log.e(TAG,clientSocketTools.byte2hex(message, message_len) + "     len = " + message_len);
                         if (message_len == 5) {
-                            System.arraycopy(message, 0, data, 0, 5);
-                            handler.sendMessage(handler.obtainMessage(100, data));
-                        }
+                            try {
+                                sleep(1000);
+                                System.arraycopy(message, 0, data, 0, 5);
+                                handler.sendMessage(handler.obtainMessage(100, data));
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
 
+//                            if(MainActivity.isAvailable()) {
+//                                MainActivity.isAvailable = false;
+
+//                                MainActivity.isAvailable = true;
+//                            } else {
+//                                try {
+//                                    sleep(1000);
+//                                } catch (InterruptedException e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }
+                        }
                     }
                 });
             }
