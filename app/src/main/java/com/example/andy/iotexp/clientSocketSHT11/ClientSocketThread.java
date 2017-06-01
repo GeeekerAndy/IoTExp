@@ -53,7 +53,7 @@ public class ClientSocketThread extends Thread {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         while (!interrupted()) {
             try {
-                MainActivity.isAvailable = false;
+//                MainActivity.isAvailable = false;
                 this.getOutputStream().write(sendBuffer);
                 while (len == buffer_size) {
                     len = this.getInputStream().read(buffer, 0, buffer_size);
@@ -70,7 +70,7 @@ public class ClientSocketThread extends Thread {
                 e.printStackTrace();
             }
             try {
-                sleep(1060);
+                sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

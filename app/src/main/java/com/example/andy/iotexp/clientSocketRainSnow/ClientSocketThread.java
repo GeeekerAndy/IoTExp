@@ -57,7 +57,7 @@ public class ClientSocketThread extends Thread {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         while (!interrupted()) {
             try {
-                MainActivity.isAvailable = false;
+//                MainActivity.isAvailable = false;
                 this.getOutputStream().write(sendBuffer);
                 while (len == buffer_size) {
                     len = this.getInputStream().read(buffer, 0, buffer_size);

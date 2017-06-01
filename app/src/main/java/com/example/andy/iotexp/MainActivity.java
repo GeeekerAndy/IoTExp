@@ -21,7 +21,7 @@ import com.example.andy.iotexp.Scenes.FamilyWeather;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static volatile boolean isAvailable = true;
+//    public static volatile boolean isAvailable = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +45,14 @@ public class MainActivity extends AppCompatActivity {
         new FamilyTemperature(this, tv_temperature, tv_humidity);
     }
 
-    public synchronized static boolean isAvailable() {
-        return isAvailable;
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        System.exit(0);
     }
+
+//    public synchronized static boolean isAvailable() {
+//        return isAvailable;
+//    }
 
 }

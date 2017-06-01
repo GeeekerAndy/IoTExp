@@ -31,11 +31,11 @@ public class FamilyTemperature {
         public void handleMessage(Message msg) {
             humi = clientSocketTools.byte2float((byte[]) (msg.obj), 0);
             temp = clientSocketTools.byte2float((byte[]) (msg.obj), 4);
-            String temperature = "Temperature: " + Float.toString(temp).substring(0, 4) + "ºC";
+            String temperature = "Temperature: " + Float.toString(temp).substring(0, 4) + "°C";
             String humidity = "Humidity:" + Float.toString(humi).substring(0, 4) + "%";
             tv_temperature.setText(temperature);
             tv_humidity.setText(humidity);
-            if(humi > 40 || humi < 10) {
+            if(humi > 45 || humi < 10) {
                 Toast.makeText(context, "Dehumidifier launching...", Toast.LENGTH_SHORT).show();
             }
             if(temp > 30.0 || temp < 5.0) {
